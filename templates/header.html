@@ -1,0 +1,13 @@
+<header>
+    <a href="/cv1">social media</a>|
+    <a href="/cv2">cv</a>|
+    <a href="/cv11">contact</a>|
+    <a href="/assignment8">assignment8</a>|
+    <a href="/assignment9">assignment9</a>|
+    <a href="/assignment10">assignment10</a>|
+    <a href="/assignment11/users">assignment11 - Users</a>
+    <a href="/assignment11/outer_source">assignment11 - Outer Source</a>
+    {% if session.username %}
+    <a href="/logout">LogOut</a> Hello {{ session.username }}
+    {% endif %}
+</header>

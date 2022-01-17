@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+assigment 11
+{% endblock %}
+
+{% block plot %}
+    <script src="../static/assignment11.js" ></script>
+    <br>
+
+    <h1>Frontend:</h1>
+    <input type="number" id="frontend_id_input" placeholder="Enter User ID">
+    <button onclick="get_user_frontend()"> ask </button>
+    <div id="frontend_user_div"> </div>
+
+    <h1>Backend:</h1>
+    <input type="number" id="backend_id_input" placeholder="Enter User ID">
+    <button onclick="get_user_backend()"> ask </button>
+    <div id="backend_user_div"> </div>
+
+{% endblock%}

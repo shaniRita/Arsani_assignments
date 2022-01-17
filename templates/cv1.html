@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+social media
+{% endblock %}
+{% block plot%}
+    <div class="center">
+        <div class="content">
+          <h1>SHANI FREIMAN</h1>
+            <h2> Industrial Engineering and Management Student</h2>
+            <h3> Contact Me</h3>
+        </div>
+        <div class="social">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <a href="https://www.facebook.com/shani.freiman"><i class="fa fa-facebook"></i></a>
+            <a href="mailto:shanifreiman@gmail.com" ><i class="fa fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/shani-freiman-b8003220b/"><i class="fa fa-linkedin"></i></a>
+        </div>
+        <div class="download">
+            <button onclick="openPDF()" class="btn"><i class="fa fa-download"></i> Download CV </button>
+            <button onclick="openLinkCV()" class="btn"> Open CV </button>
+            <button onclick="openContactPage()" class="btn"> Contact Me </button>
+        </div>
+    </div>
+{% endblock %}
