@@ -14,29 +14,35 @@ users = {'user1': {'name': 'shani', 'email': 'shani@gmail.com'},
          'user6': {'name': 'coral', 'email': 'coral@gmail.com'}
          }
 
+
 @app.route('/cv1')
 def c1():
     return render_template('cv1.html')
+
 
 @app.route('/')
 @app.route('/cv2')
 def c2():
     return render_template('cv2.html')
+
+
 @app.route('/cv11')
 def c11():
     return render_template('cv11.html')
 
+
 @app.route('/assignment8')
 def music():
-    print ("im in about ")
+    print("im in about ")
     name = 'shani'
-    fname= 'freiman'
+    fname = 'freiman'
     return render_template('assignment8.html',
-                           profile={'name':'shani','second_name':'freiman'},
+                           profile={'name': 'shani', 'second_name': 'freiman'},
                            university='BGU',
-                           degree=['BSc','MS'],
-                           hobbies=('art','music','sql'))
+                           degree=['BSc', 'MS'],
+                           hobbies=('art', 'music', 'sql'))
     return render_template('assignment8.html')
+
 
 @app.route('/assignment9', methods=['GET', 'POST'])
 def assignment9_func():
@@ -46,8 +52,8 @@ def assignment9_func():
             if 'search' in request.args:
                 search = request.args['search']
                 return render_template('assignment9.html', username=session['username']
-                                                         , search=search
-                                                         , users=users)
+                                       , search=search
+                                       , users=users)
             return render_template('assignment9.html', users=users, username=session['username'])
         return render_template('assignment9.html', users=users)
     if request.method == 'POST':
@@ -64,7 +70,7 @@ def assignment9_func():
 
 @app.route('/logout')
 def logout_func():
-    session['username'] = '' ##Log out excist user
+    session['username'] = ''  ##Log out excist user
     return render_template('assignment9.html')
 
 
@@ -91,8 +97,31 @@ def assignment11_get_user():
 
 
 from pages.assignment10.assignment10 import assignment10
+
 app.register_blueprint(assignment10)
+
+
+@app.route('/assignment12/restapi_users', defaults={'user_id': 2})
+@app.route("/assignment12/restapi_users/<int:user_id>")
+def ex12(user_id):
+    print('yes')
+    return_dict = {}
+    query = "select * from db.users where id= '%s';" % user_id
+    user = interact_db(query=query, query_type='fetch')
+    if len(user) > 0:
+        return_dict[f'user_{user_id}'] = {
+            'name': user[0].name,
+            'email': user[0].email,
+            'day created': user[0].create_date,
+            'password': user[0].password
+        }
+
+    else:
+        return_dict = {
+            'sucsses': 'false'
+        }
+    return jsonify(return_dict)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
-
